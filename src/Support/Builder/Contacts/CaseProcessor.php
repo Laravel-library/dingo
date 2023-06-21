@@ -2,7 +2,7 @@
 
 namespace Dingo\Support\Builder\Contacts;
 
-interface CaseWhenable
+interface CaseProcessor
 {
     public function case(): self;
 

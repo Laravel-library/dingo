@@ -3,27 +3,27 @@
 namespace Dingo\Support\Builder;
 
 use Dingo\Support\Builder\Contacts\Aliasable;
-use Dingo\Support\Builder\Contacts\CaseWhenable;
+use Dingo\Support\Builder\Contacts\CaseProcessor;
 
-class CaseWhen implements CaseWhenable, Aliasable
+class CaseHandler implements CaseProcessor, Aliasable
 {
 
-    public function case(): CaseWhenable
+    public function case(): CaseProcessor
     {
         // TODO: Implement case() method.
     }
 
-    public function when(): CaseWhenable
+    public function when(): CaseProcessor
     {
         // TODO: Implement when() method.
     }
 
-    public function then(): CaseWhenable
+    public function then(): CaseProcessor
     {
         // TODO: Implement then() method.
     }
 
-    public function else(): CaseWhenable
+    public function else(): CaseProcessor
     {
         // TODO: Implement else() method.
     }
