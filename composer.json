@@ -1,0 +1,21 @@
+{
+  "name": "xgbnl/dingo",
+  "description": "LayeredStructure",
+  "type": "library",
+  "require": {
+    "php": "^8.2",
+    "ext-redis": "*"
+  },
+  "require-dev": {
+    "illuminate/support": "^10.13.5",
+    "illuminate/database": "^10.13.5",
+    "phpunit/phpunit": "^10.2"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Dingo\\": "src/"
+    }
+  },
+  "minimum-stability": "stable"
+}
