@@ -3,14 +3,21 @@
 namespace Dingo\Services;
 
 use Dingo\Services\Contacts\Creator;
+use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 readonly class Service implements Creator
 {
+    protected Container $app;
 
-    public function createOrUpdate(array $attributes): Builder|Model
+    public function __construct(Container $app)
     {
-        // TODO: Implement createOrUpdate() method.
+        $this->app = $app;
+    }
+
+    public function createOrUpdate(array $attributes, string $by = 'id'): Builder|Model
+    {
+
     }
 }
