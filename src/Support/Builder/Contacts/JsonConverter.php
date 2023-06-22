@@ -2,7 +2,7 @@
 
 namespace Dingo\Support\Builder\Contacts;
 
-interface JsonConverter
+interface JsonConverter extends Queryable
 {
     public function convert(Queryable|string|array $value): string;
 }

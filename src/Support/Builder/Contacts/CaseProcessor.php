@@ -2,7 +2,7 @@
 
 namespace Dingo\Support\Builder\Contacts;
 
-interface CaseProcessor
+interface CaseProcessor extends Queryable
 {
     public function case(Queryable|string $value): self;
 

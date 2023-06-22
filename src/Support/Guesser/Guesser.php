@@ -2,7 +2,7 @@
 
 namespace Dingo\Support\Guesser;
 
-readonly class Guesser
+readonly abstract class Guesser
 {
 
 }
