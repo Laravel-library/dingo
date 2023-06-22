@@ -2,18 +2,31 @@
 
 namespace Dingo\Support\Builder;
 
+use Dingo\Support\Builder\Contacts\Aliasable;
+use Dingo\Support\Builder\Contacts\Formatter;
 use Dingo\Support\Builder\Contacts\Queryable;
 
-class Aggregator implements Contacts\Aggregator
+class Aggregator implements Contacts\Aggregator, Aliasable
 {
+    protected Formatter $formatter;
+
+    public function __construct(Formatter $formatter)
+    {
+        $this->formatter = $formatter;
+    }
 
     public function count(string|Queryable $expression): string
     {
-        // TODO: Implement count() method.
+        return 'COUNT(' . $expression . ')';
     }
 
     public function sum(string|Queryable $expression): string
     {
-        // TODO: Implement sum() method.
+        return 'SUM(' . $expression . ')';
+    }
+
+    public function alias(string $name): Aliasable|Contacts\Aggregator
+    {
+        // TODO: Implement alias() method.
     }
 }
