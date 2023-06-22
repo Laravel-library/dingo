@@ -2,7 +2,7 @@
 
 namespace Dingo\Caches\Contacts;
 
-interface Formatter
+interface Generator
 {
     public function slug(): string;
 }

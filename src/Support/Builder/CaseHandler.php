@@ -4,10 +4,17 @@ namespace Dingo\Support\Builder;
 
 use Dingo\Support\Builder\Contacts\Aliasable;
 use Dingo\Support\Builder\Contacts\CaseProcessor;
+use Dingo\Support\Builder\Contacts\Formatter;
 use Dingo\Support\Builder\Contacts\Queryable;
 
-class CaseHandler implements CaseProcessor, Aliasable
+readonly class CaseHandler implements CaseProcessor, Aliasable
 {
+    protected Formatter $formatter;
+
+    public function __construct(Formatter $formatter)
+    {
+        $this->formatter = $formatter;
+    }
 
     public function case(Queryable|string $value): CaseProcessor
     {

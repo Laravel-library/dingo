@@ -6,5 +6,5 @@ use Redis;
 
 interface Connection
 {
-    public function client(): Redis;
+    public function client(): mixed;
 }

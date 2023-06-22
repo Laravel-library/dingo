@@ -3,11 +3,11 @@
 namespace Dingo\Caches;
 
 use Dingo\Caches\Contacts\Connection;
-use Dingo\Caches\Contacts\Formatter;
+use Dingo\Caches\Contacts\Generator;
 use Dingo\Support\Guesser\Contacts\Guesser;
 use Redis;
 
-readonly class Cacheable implements Connection, Formatter
+readonly class Cacheable implements Connection, Generator
 {
 
     private Redis $redis;
