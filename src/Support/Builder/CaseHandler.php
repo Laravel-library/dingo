@@ -36,7 +36,7 @@ readonly class CaseHandler implements CaseProcessor, Aliasable
         // TODO: Implement else() method.
     }
 
-    public function end(): string
+    public function end(): CaseProcessor
     {
         // TODO: Implement end() method.
     }
@@ -44,5 +44,10 @@ readonly class CaseHandler implements CaseProcessor, Aliasable
     public function alias(string $name): Aliasable
     {
         // TODO: Implement alias() method.
+    }
+
+    public function toSql(): string
+    {
+        // TODO: Implement toSql() method.
     }
 }

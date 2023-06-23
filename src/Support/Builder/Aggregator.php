@@ -15,12 +15,12 @@ class Aggregator implements Contacts\Aggregator, Aliasable
         $this->formatter = $formatter;
     }
 
-    public function count(string|Queryable $expression): string
+    public function count(string|Queryable $expression): Contacts\Aggregator
     {
         return 'COUNT(' . $expression . ')';
     }
 
-    public function sum(string|Queryable $expression): string
+    public function sum(string|Queryable $expression): Contacts\Aggregator
     {
         return 'SUM(' . $expression . ')';
     }
@@ -28,5 +28,10 @@ class Aggregator implements Contacts\Aggregator, Aliasable
     public function alias(string $name): Aliasable|Contacts\Aggregator
     {
         // TODO: Implement alias() method.
+    }
+
+    public function toSql(): string
+    {
+        // TODO: Implement toSql() method.
     }
 }

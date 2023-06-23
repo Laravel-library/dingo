@@ -12,5 +12,5 @@ interface CaseProcessor extends Queryable
 
     public function else(Queryable|string $value): self;
 
-    public function end(): string;
+    public function end(): self;
 }
