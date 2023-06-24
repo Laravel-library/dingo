@@ -5,7 +5,11 @@ namespace Dingo\Services\Contacts;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-interface Creator
+interface DataAccess
 {
     public function createOrUpdate(array $attributes): Builder|Model;
+
+    public function delete(mixed $value): int;
+
+    public function deleteMany(mixed $values): int;
 }

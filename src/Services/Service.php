@@ -3,11 +3,11 @@
 namespace Dingo\Services;
 
 use Dingo\Boundary\Factory;
-use Dingo\Services\Contacts\Creator;
+use Dingo\Services\Contacts\DataAccess;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-readonly class Service implements Creator
+readonly class Service implements DataAccess
 {
     protected Factory $app;
 
@@ -16,8 +16,18 @@ readonly class Service implements Creator
         $this->app = $factory;
     }
 
-    final public function createOrUpdate(array $attributes, string $by = 'id'): Builder|Model
+    public function createOrUpdate(array $attributes): Builder|Model
     {
+        // TODO: Implement createOrUpdate() method.
+    }
 
+    public function delete(mixed $value): int
+    {
+        // TODO: Implement delete() method.
+    }
+
+    public function deleteMany(mixed $values): int
+    {
+        // TODO: Implement deleteMany() method.
     }
 }
