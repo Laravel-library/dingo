@@ -2,8 +2,9 @@
 
 namespace Dingo\Services;
 
-use Dingo\Boundary\Factory;
+use Dingo\Boundary\Contacts\Factory;
 use Dingo\Services\Contacts\DataAccess;
+use Dingo\Support\Guesser\Contacts\Guesser;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,9 +12,13 @@ readonly class Service implements DataAccess
 {
     protected Factory $app;
 
-    public function __construct(Factory $factory)
+    protected Guesser $guesser;
+
+    public function __construct(Factory $factory, Guesser $guesser)
     {
         $this->app = $factory;
+
+        $this->guesser = $guesser;
     }
 
     public function createOrUpdate(array $attributes): Builder|Model
