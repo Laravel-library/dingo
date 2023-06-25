@@ -6,11 +6,12 @@ use Dingo\Caches\Cacheable;
 use Dingo\Repositories\Repository;
 use Dingo\Support\Builder\Aggregator;
 use Dingo\Support\Builder\CaseHandler;
-use Dingo\Support\Builder\Contacts\Queryable;
+use Dingo\Support\Builder\Contacts\CaseProcessor;
+use Dingo\Support\Builder\Contacts\JsonConverter;
+use Dingo\Support\Builder\JsonHandler;
 use Dingo\Support\Guesser\CacheGuesser;
 use Dingo\Support\Guesser\Contacts\Guesser;
 use Dingo\Support\Guesser\QueryGuesser;
-use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Facades\Redis;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
@@ -24,12 +25,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     protected function bindingRepositoryDepends(): void
     {
         $this->app->when(Repository::class)
-            ->needs(Queryable::class)
-            ->give([
-                $this->app->make(Aggregator::class),
-                $this->app->make(CaseHandler::class),
-                $this->app->make(Jsonable::class),
-            ]);
+            ->needs(\Dingo\Support\Builder\Contacts\Aggregator::class)
+            ->give(Aggregator::class);
+
+        $this->app->when(Repository::class)
+            ->needs(CaseProcessor::class)
+            ->give(CaseHandler::class);
+
+          $this->app->when(Repository::class)
+            ->needs(JsonConverter::class)
+            ->give(JsonHandler::class);
 
         $this->app->when(Repository::class)
             ->needs(Guesser::class)
