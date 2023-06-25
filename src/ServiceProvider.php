@@ -25,7 +25,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     protected function bindingRepositoryDepends(): void
     {
         $this->app->when(Repository::class)
-            ->needs(\Dingo\Support\Builder\Contacts\Aggregator::class)
+            ->needs(Support\Builder\Contacts\Aggregator::class)
             ->give(Aggregator::class);
 
         $this->app->when(Repository::class)
