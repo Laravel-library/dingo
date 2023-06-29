@@ -16,7 +16,8 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Dingo\\": "src/"
+      "Dingo\\": "src/",
+      "Test\\": "tests/"
     }
   },
   "minimum-stability": "stable"
