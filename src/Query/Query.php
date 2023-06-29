@@ -6,6 +6,7 @@ use Dingo\Boundary\Contacts\Factory;
 use Dingo\Guesser\Contacts\Guesser;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Contracts\Database\Query\Builder as rawQuery;
+use Illuminate\Database\Eloquent\Model;
 
 readonly class Query implements Contacts\Queryable
 {
@@ -33,6 +34,11 @@ readonly class Query implements Contacts\Queryable
 
     public function table(): string
     {
-        return $this->factory->app($this->guesser->getName())->table;
+        return $this->model()->getTable();
+    }
+
+    public function model(): Model
+    {
+        return $this->factory->app($this->guesser->getName());
     }
 }
