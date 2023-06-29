@@ -4,7 +4,7 @@ namespace Dingo\Caches;
 
 use Dingo\Caches\Contacts\Connection;
 use Dingo\Caches\Contacts\Generator;
-use Dingo\Support\Guesser\Contacts\Guesser;
+use Dingo\Guesser\Contacts\Guesser;
 use Redis;
 
 readonly class Cacheable implements Connection, Generator

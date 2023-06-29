@@ -2,13 +2,13 @@
 
 namespace Dingo\Repositories;
 
+use Dingo\Guesser\Contacts\Guesser;
 use Dingo\Support\Builder\Contacts\Aggregator;
 use Dingo\Support\Builder\Contacts\Aliasable;
 use Dingo\Support\Builder\Contacts\CaseProcessor;
 use Dingo\Support\Builder\Contacts\JsonConverter;
-use Dingo\Support\Guesser\Contacts\Guesser;
 
-readonly abstract class Repository
+readonly class Repository
 {
     protected Aggregator|Aliasable $aggregator;
 
@@ -27,5 +27,10 @@ readonly abstract class Repository
         $this->jsonConverter = $converter;
 
         $this->guesser = $guesser;
+    }
+
+    public function test()
+    {
+
     }
 }

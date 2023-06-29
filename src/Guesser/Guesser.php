@@ -1,6 +1,6 @@
 <?php
 
-namespace Dingo\Support\Guesser;
+namespace Dingo\Guesser;
 
 readonly abstract class Guesser
 {

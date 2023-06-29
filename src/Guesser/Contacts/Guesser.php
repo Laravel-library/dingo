@@ -1,6 +1,6 @@
 <?php
 
-namespace Dingo\Support\Guesser\Contacts;
+namespace Dingo\Guesser\Contacts;
 
 interface Guesser
 {
