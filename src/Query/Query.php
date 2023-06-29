@@ -21,18 +21,18 @@ readonly class Query implements Contacts\Queryable
         $this->factory = $factory;
     }
 
-    public function builder(): Builder
-    {
-        // TODO: Implement builder() method.
-    }
-
     public function query(): rawQuery
     {
-        // TODO: Implement query() method.
+        return $this->builder()->newQuery();
+    }
+
+    public function builder(): Builder
+    {
+        return $this->guesser->getName()::query();
     }
 
     public function table(): string
     {
-        // TODO: Implement table() method.
+        return $this->factory->app($this->guesser->getName())->table;
     }
 }
