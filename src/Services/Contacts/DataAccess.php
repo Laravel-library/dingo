@@ -11,5 +11,5 @@ interface DataAccess
 
     public function delete(mixed $value): int;
 
-    public function deleteMany(mixed $values): int;
+    public function deleteMany(array|\Closure $values): int;
 }

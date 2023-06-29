@@ -7,6 +7,7 @@ use Dingo\Caches\Cacheable;
 use Dingo\Guesser\CacheGuesser;
 use Dingo\Guesser\Contacts\Guesser;
 use Dingo\Guesser\QueryGuesser;
+use Dingo\Query\Query;
 use Dingo\Repositories\Repository;
 use Dingo\Services\Service;
 use Dingo\Support\Builder\Aggregator;
@@ -27,6 +28,15 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->bindingGuesser();
 
         $this->bindingServiceDepends();
+
+        $this->bindingQueryDepends();
+    }
+
+    protected function bindingQueryDepends(): void
+    {
+        $this->app->when(Query::class)
+            ->needs(Guesser::class)
+            ->give(fn() => new QueryGuesser());
     }
 
     protected function bindingRepositoryDepends(): void
