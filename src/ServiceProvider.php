@@ -8,7 +8,6 @@ use Dingo\Caches\Cache;
 use Dingo\Guesser\CacheGuesser;
 use Dingo\Guesser\Contacts\Resolvable;
 use Dingo\Guesser\QueryGuesser;
-use Dingo\Query\Query;
 use Dingo\Repositories\Repository;
 use Dingo\Services\Service;
 use Dingo\Support\Builder\Aggregator;
@@ -25,6 +24,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->bindingRepositoryDepends();
 
         $this->bindingCacheableDepends();
+
+        $this->bindSameDepends();
     }
 
     protected function bindSameDepends(): void
