@@ -2,11 +2,26 @@
 
 namespace Dingo\Guesser;
 
-readonly class CacheGuesser extends Guesser implements \Dingo\Guesser\Contacts\Guesser
+final class CacheGuesser extends Guesser
 {
 
-    public function getName(): string
+    public function getResolved(): string
     {
-        // TODO: Implement getName() method.
+        return 'cacheable:' . strtolower($this->class);
+    }
+
+    protected function hasSuffix(string $name): bool
+    {
+        return str_ends_with($name, $this->suffix());
+    }
+
+    protected function replaceSuffix(string $clazz): string
+    {
+        return substr($clazz, 0, -strlen($this->suffix()));
+    }
+
+    public function suffix(): string
+    {
+        return 'Cache';
     }
 }

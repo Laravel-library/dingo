@@ -32,6 +32,6 @@ readonly class Cacheable implements Connection, Generator
 
     public function slug(): string
     {
-        return $this->guesser->getName();
+        return $this->guesser->getModel();
     }
 }

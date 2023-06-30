@@ -4,7 +4,7 @@ namespace Dingo\Boundary;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AnonymousModel extends Model
+class SpecialModel extends Model
 {
 
 }

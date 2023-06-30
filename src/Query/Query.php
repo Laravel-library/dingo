@@ -29,7 +29,7 @@ readonly class Query implements Contacts\Queryable
 
     public function builder(): Builder
     {
-        return $this->guesser->getName()::query();
+        return $this->guesser->getModel()::query();
     }
 
     public function table(): string
@@ -39,6 +39,6 @@ readonly class Query implements Contacts\Queryable
 
     public function model(): Model
     {
-        return $this->factory->app($this->guesser->getName());
+        return $this->factory->app($this->guesser->getModel());
     }
 }
