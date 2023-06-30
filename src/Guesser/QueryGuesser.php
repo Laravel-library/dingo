@@ -2,12 +2,14 @@
 
 namespace Dingo\Guesser;
 
+use Dingo\Boundary\SpecialModel;
+
 final class QueryGuesser extends Guesser
 {
 
     public function getResolved(): string
     {
-        return $this->class;
+        return class_exists($this->class) ? $this->class : SpecialModel::class;
     }
 
     protected function hasSuffix(string $name): bool
@@ -27,7 +29,7 @@ final class QueryGuesser extends Guesser
 
         $suffixName = current($clazzSuffix);
 
-        return substr($clazz,0,-strlen($suffixName));
+        return substr($clazz, 0, -strlen($suffixName));
     }
 
     protected function suffix(): array
