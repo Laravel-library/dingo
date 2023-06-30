@@ -10,14 +10,16 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Contracts\Database\Query\Builder as rawQuery;
 use Illuminate\Database\Eloquent\Model;
 
-readonly class Service implements DataAccess, Queryable
+class Service implements DataAccess, Queryable
 {
 
-    private Resolvable $resolvable;
+    private readonly Resolvable $resolvable;
 
-    private Factory $factory;
+    private readonly Factory $factory;
 
-    private Model $model;
+    private readonly Model $model;
+
+    private array $ignores = [];
 
     public function __construct(Resolvable $resolvable, Factory $factory)
     {
@@ -46,7 +48,7 @@ readonly class Service implements DataAccess, Queryable
 
     public function delete(mixed $value, string $by = 'id'): int
     {
-        return $this->builder()->where($by,$value)->delete();
+        return $this->builder()->where($by, $value)->delete();
     }
 
     public function query(): rawQuery
@@ -57,5 +59,15 @@ readonly class Service implements DataAccess, Queryable
     public function builder(): Builder
     {
         return $this->model->newModelQuery();
+    }
+
+    public function updateJson(array|string $attributes, int $id): void
+    {
+
+    }
+
+    public function ignore(array|string $attributes): DataAccess
+    {
+
     }
 }
