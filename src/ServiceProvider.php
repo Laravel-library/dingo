@@ -2,10 +2,11 @@
 
 namespace Dingo;
 
+use Dingo\Boundary\Application;
 use Dingo\Boundary\Contacts\Factory;
-use Dingo\Caches\Cacheable;
+use Dingo\Caches\Cache;
 use Dingo\Guesser\CacheGuesser;
-use Dingo\Guesser\Contacts\Guesser;
+use Dingo\Guesser\Contacts\Resolvable;
 use Dingo\Guesser\QueryGuesser;
 use Dingo\Query\Query;
 use Dingo\Repositories\Repository;
@@ -24,18 +25,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->bindingRepositoryDepends();
 
         $this->bindingCacheableDepends();
-
-        $this->bindingGuesser();
-
-        $this->bindingServiceDepends();
-
-        $this->bindingQueryDepends();
     }
 
-    protected function bindingQueryDepends(): void
+    protected function bindSameDepends(): void
     {
-        $this->app->when(Query::class)
-            ->needs(Guesser::class)
+        $this->app->when([Service::class, Repository::class])
+            ->needs(Factory::class)
+            ->give(Application::class);
+
+        $this->app->when([Service::class, Repository::class])
+            ->needs(Resolvable::class)
             ->give(fn() => new QueryGuesser());
     }
 
@@ -54,27 +53,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             ->give(JsonHandler::class);
     }
 
-    protected function bindingServiceDepends(): void
-    {
-        $this->app->when(Service::class)
-            ->needs(Factory::class)
-            ->give(Boundary\Factory::class);
-    }
-
-    protected function bindingGuesser(): void
-    {
-        $this->app->when([Repository::class, Service::class])
-            ->needs(Guesser::class)
-            ->give(QueryGuesser::class);
-    }
-
     protected function bindingCacheableDepends(): void
     {
-        $this->app->when(Cacheable::class)
-            ->needs(Guesser::class)
-            ->give(CacheGuesser::class);
+        $this->app->when(Cache::class)
+            ->needs(Resolvable::class)
+            ->give(fn() => new CacheGuesser());
 
-        $this->app->when(Cacheable::class)
+        $this->app->when(Cache::class)
             ->needs(\Redis::class)
             ->give(fn() => Redis::connection()->client());
     }

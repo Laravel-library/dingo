@@ -2,7 +2,7 @@
 
 namespace Dingo\Services\Contacts;
 
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 interface DataAccess

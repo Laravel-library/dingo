@@ -5,7 +5,7 @@ namespace Dingo\Boundary;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
 
-readonly class Factory implements Contacts\Factory
+readonly class Application implements Contacts\Factory
 {
     protected Container $container;
 

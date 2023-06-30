@@ -2,13 +2,19 @@
 
 namespace Dingo\Repositories;
 
-use Dingo\Guesser\Contacts\Guesser;
+use Dingo\Boundary\Contacts\Factory;
+use Dingo\Guesser\Contacts\Resolvable;
+use Dingo\Query\Contacts\DataAccess;
+use Dingo\Query\Contacts\Queryable;
 use Dingo\Support\Builder\Contacts\Aggregator;
 use Dingo\Support\Builder\Contacts\Aliasable;
 use Dingo\Support\Builder\Contacts\CaseProcessor;
 use Dingo\Support\Builder\Contacts\JsonConverter;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Contracts\Database\Query\Builder as rawQuery;
+use Illuminate\Database\Eloquent\Model;
 
-readonly class Repository
+readonly class Repository implements Queryable,DataAccess
 {
     protected Aggregator|Aliasable $aggregator;
 
@@ -16,9 +22,11 @@ readonly class Repository
 
     protected JsonConverter|Aliasable $jsonConverter;
 
-    protected Guesser $guesser;
+    private Resolvable $resolvable;
 
-    public function __construct(Aggregator $aggregator, CaseProcessor $processor, JsonConverter $converter, Guesser $guesser)
+    private Factory $factory;
+
+    public function __construct(Aggregator $aggregator, CaseProcessor $processor, JsonConverter $converter, Resolvable $resolvable, Factory $factory)
     {
         $this->aggregator = $aggregator;
 
@@ -26,11 +34,30 @@ readonly class Repository
 
         $this->jsonConverter = $converter;
 
-        $this->guesser = $guesser;
+        $this->resolvable = $resolvable;
+
+        $this->factory = $factory;
     }
 
-    public function test()
+    public function query(): rawQuery
     {
+        return $this->model()->newQuery();
+    }
 
+    public function builder(): Builder
+    {
+        return $this->model()->newModelQuery();
+    }
+
+    public function table(): string
+    {
+        return $this->model()->getTable();
+    }
+
+    public function model(): Model
+    {
+        $class = $this->resolvable->resolve(get_class($this))->getResolved();
+
+        return $this->factory->app($class);
     }
 }

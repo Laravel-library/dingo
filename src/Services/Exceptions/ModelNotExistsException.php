@@ -8,6 +8,6 @@ class ModelNotExistsException extends RuntimeException
 {
     public static function modelNotExistsError(): never
     {
-        throw new self('Model not exists.');
+        throw new self('DataAccess not exists.');
     }
 }
