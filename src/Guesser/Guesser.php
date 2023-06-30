@@ -12,6 +12,10 @@ abstract class Guesser implements Resolvable
 
     public function resolve(string $name): self
     {
+        if (null !== $this->class) {
+            return $this;
+        }
+
         $clazz = substr($name, strripos($name, '\\') + 1);
 
         if ($this->hasSuffix($clazz)) {
