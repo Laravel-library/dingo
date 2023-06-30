@@ -14,22 +14,19 @@ final class QueryGuesser extends Guesser
 
     protected function hasSuffix(string $name): bool
     {
-        foreach ($this->suffix() as $suffix) {
-            if (str_ends_with($name, $suffix)) {
-                return true;
-            }
-        }
-
-        return false;
+       return !empty($this->findSuffix($name));
     }
 
     protected function replaceSuffix(string $clazz): string
     {
-        $clazzSuffix = array_filter($this->suffix(), fn(string $suffix) => str_contains($clazz, $suffix));
+        $suffix = current($this->findSuffix($clazz));
 
-        $suffixName = current($clazzSuffix);
+        return substr($clazz, 0, -strlen($suffix));
+    }
 
-        return substr($clazz, 0, -strlen($suffixName));
+    private function findSuffix(string $clazz):array
+    {
+        return array_filter($this->suffix(), fn(string $suffix) => str_ends_with($clazz, $suffix));
     }
 
     protected function suffix(): array
