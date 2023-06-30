@@ -3,9 +3,9 @@
 namespace Dingo\Services;
 
 use Dingo\Boundary\Contacts\Factory;
-use Dingo\Guesser\Contacts\Resolvable;
 use Dingo\Query\Contacts\Queryable;
 use Dingo\Services\Contacts\DataAccess;
+use Dingo\Support\Guesser\Contacts\Resolvable;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Contracts\Database\Query\Builder as rawQuery;
 use Illuminate\Database\Eloquent\Model;

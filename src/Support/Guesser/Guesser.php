@@ -1,8 +1,8 @@
 <?php
 
-namespace Dingo\Guesser;
+namespace Dingo\Support\Guesser;
 
-use Dingo\Guesser\Contacts\Resolvable;
+use Dingo\Support\Guesser\Contacts\Resolvable;
 
 abstract class Guesser implements Resolvable
 {

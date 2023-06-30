@@ -1,6 +1,6 @@
 <?php
 
-namespace Dingo\Guesser;
+namespace Dingo\Support\Guesser;
 
 use Dingo\Boundary\SpecialModel;
 

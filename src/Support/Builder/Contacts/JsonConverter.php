@@ -2,9 +2,9 @@
 
 namespace Dingo\Support\Builder\Contacts;
 
-interface JsonConverter extends Queryable
+interface JsonConverter extends Query
 {
-    public function toArray(Queryable|string|array $value): self;
+    public function toArray(Query|string|array $value): self;
 
-    public function toJson(Queryable|string|array $value): self;
+    public function toJson(Query|string|array $value): self;
 }

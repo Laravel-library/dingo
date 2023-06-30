@@ -5,7 +5,7 @@ namespace Dingo\Support\Builder;
 use Dingo\Support\Builder\Contacts\Aliasable;
 use Dingo\Support\Builder\Contacts\CaseProcessor;
 use Dingo\Support\Builder\Contacts\Formatter;
-use Dingo\Support\Builder\Contacts\Queryable;
+use Dingo\Support\Builder\Contacts\Query;
 
 readonly class CaseHandler implements CaseProcessor, Aliasable
 {
@@ -16,22 +16,22 @@ readonly class CaseHandler implements CaseProcessor, Aliasable
         $this->formatter = $formatter;
     }
 
-    public function case(Queryable|string $value): CaseProcessor
+    public function case(Query|string $value): CaseProcessor
     {
         // TODO: Implement case() method.
     }
 
-    public function when(Queryable|string $value): CaseProcessor
+    public function when(Query|string $value): CaseProcessor
     {
         // TODO: Implement when() method.
     }
 
-    public function then(Queryable|string $value): CaseProcessor
+    public function then(Query|string $value): CaseProcessor
     {
         // TODO: Implement then() method.
     }
 
-    public function else(Queryable|string $value): CaseProcessor
+    public function else(Query|string $value): CaseProcessor
     {
         // TODO: Implement else() method.
     }

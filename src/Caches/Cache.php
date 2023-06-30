@@ -2,9 +2,9 @@
 
 namespace Dingo\Caches;
 
-use Dingo\Caches\Contacts\Connection;
 use Dingo\Caches\Contacts\Cacheable;
-use Dingo\Guesser\Contacts\Resolvable;
+use Dingo\Caches\Contacts\Connection;
+use Dingo\Support\Guesser\Contacts\Resolvable;
 use Redis;
 
 readonly class Cache implements Connection, Cacheable

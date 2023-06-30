@@ -2,9 +2,9 @@
 
 namespace Dingo\Support\Builder\Contacts;
 
-interface Aggregator extends Queryable
+interface Aggregator extends Query
 {
-    public function count(Queryable|string $expression): self;
+    public function count(Query|string $expression): self;
 
-    public function sum(Queryable|string $expression): self;
+    public function sum(Query|string $expression): self;
 }

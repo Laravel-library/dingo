@@ -4,7 +4,7 @@ namespace Dingo\Support\Builder;
 
 use Dingo\Support\Builder\Contacts\Aliasable;
 use Dingo\Support\Builder\Contacts\Formatter;
-use Dingo\Support\Builder\Contacts\Queryable;
+use Dingo\Support\Builder\Contacts\Query;
 
 class Aggregator implements Contacts\Aggregator, Aliasable
 {
@@ -15,12 +15,12 @@ class Aggregator implements Contacts\Aggregator, Aliasable
         $this->formatter = $formatter;
     }
 
-    public function count(string|Queryable $expression): Contacts\Aggregator
+    public function count(string|Query $expression): Contacts\Aggregator
     {
         return 'COUNT(' . $expression . ')';
     }
 
-    public function sum(string|Queryable $expression): Contacts\Aggregator
+    public function sum(string|Query $expression): Contacts\Aggregator
     {
         return 'SUM(' . $expression . ')';
     }

@@ -3,13 +3,13 @@
 namespace Dingo\Repositories;
 
 use Dingo\Boundary\Contacts\Factory;
-use Dingo\Guesser\Contacts\Resolvable;
 use Dingo\Query\Contacts\DataAccess;
 use Dingo\Query\Contacts\Queryable;
 use Dingo\Support\Builder\Contacts\Aggregator;
 use Dingo\Support\Builder\Contacts\Aliasable;
 use Dingo\Support\Builder\Contacts\CaseProcessor;
 use Dingo\Support\Builder\Contacts\JsonConverter;
+use Dingo\Support\Guesser\Contacts\Resolvable;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Contracts\Database\Query\Builder as rawQuery;
 use Illuminate\Database\Eloquent\Model;

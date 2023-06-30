@@ -1,6 +1,6 @@
 <?php
 
-namespace Dingo\Guesser;
+namespace Dingo\Support\Guesser;
 
 final class CacheGuesser extends Guesser
 {

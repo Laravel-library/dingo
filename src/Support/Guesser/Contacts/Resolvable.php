@@ -1,8 +1,8 @@
 <?php
 
-namespace Dingo\Guesser\Contacts;
+namespace Dingo\Support\Guesser\Contacts;
 
-use Dingo\Guesser\Guesser;
+use Dingo\Support\Guesser\Guesser;
 
 interface Resolvable
 {

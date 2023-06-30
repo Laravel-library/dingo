@@ -2,7 +2,7 @@
 
 namespace Dingo\Support\Builder\Contacts;
 
-interface Formatter
+interface Query
 {
-
+    public function toSql(): string;
 }

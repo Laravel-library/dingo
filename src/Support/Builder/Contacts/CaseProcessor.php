@@ -2,15 +2,15 @@
 
 namespace Dingo\Support\Builder\Contacts;
 
-interface CaseProcessor extends Queryable
+interface CaseProcessor extends Query
 {
-    public function case(Queryable|string $value): self;
+    public function case(Query|string $value): self;
 
-    public function when(Queryable|string $value): self;
+    public function when(Query|string $value): self;
 
-    public function then(Queryable|string $value): self;
+    public function then(Query|string $value): self;
 
-    public function else(Queryable|string $value): self;
+    public function else(Query|string $value): self;
 
     public function end(): self;
 }

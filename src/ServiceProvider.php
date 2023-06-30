@@ -5,9 +5,6 @@ namespace Dingo;
 use Dingo\Boundary\Application;
 use Dingo\Boundary\Contacts\Factory;
 use Dingo\Caches\Cache;
-use Dingo\Guesser\CacheGuesser;
-use Dingo\Guesser\Contacts\Resolvable;
-use Dingo\Guesser\QueryGuesser;
 use Dingo\Repositories\Repository;
 use Dingo\Services\Service;
 use Dingo\Support\Builder\Aggregator;
@@ -15,6 +12,9 @@ use Dingo\Support\Builder\CaseHandler;
 use Dingo\Support\Builder\Contacts\CaseProcessor;
 use Dingo\Support\Builder\Contacts\JsonConverter;
 use Dingo\Support\Builder\JsonHandler;
+use Dingo\Support\Guesser\CacheGuesser;
+use Dingo\Support\Guesser\Contacts\Resolvable;
+use Dingo\Support\Guesser\QueryGuesser;
 use Illuminate\Support\Facades\Redis;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
