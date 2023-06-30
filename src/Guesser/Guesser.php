@@ -12,10 +12,22 @@ abstract class Guesser implements Resolvable
 
     public function resolve(string $name): self
     {
-        if (null !== $this->class) {
+        if ($this->hasClass()) {
             return $this;
         }
 
+        $this->bindingConcrete($name);
+
+        return $this;
+    }
+
+    private function hasClass(): bool
+    {
+        return !is_null($this->class);
+    }
+
+    private function bindingConcrete(string $name): void
+    {
         $clazz = substr($name, strripos($name, '\\') + 1);
 
         if ($this->hasSuffix($clazz)) {
@@ -23,8 +35,6 @@ abstract class Guesser implements Resolvable
         }
 
         $this->class = $clazz;
-
-        return $this;
     }
 
     abstract protected function hasSuffix(string $name): bool;
