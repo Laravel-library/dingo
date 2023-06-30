@@ -2,7 +2,6 @@
 
 namespace Dingo\Services;
 
-use Closure;
 use Dingo\Boundary\Contacts\Factory;
 use Dingo\Guesser\Contacts\Resolvable;
 use Dingo\Query\Contacts\Queryable;
@@ -33,17 +32,21 @@ readonly class Service implements DataAccess, Queryable
 
     public function createOrUpdate(array $attributes, string $by = 'id'): Builder|Model
     {
+        if ($byValue = $attributes[$by] ?? null) {
 
+            if ($by === 'id') {
+                unset($attributes[$by]);
+            }
+
+            return $this->builder()->updateOrCreate([$by => $byValue], $attributes);
+        }
+
+        return $this->builder()->create($attributes);
     }
 
     public function delete(mixed $value, string $by = 'id'): int
     {
-        // TODO: Implement delete() method.
-    }
-
-    public function deleteMany(array|Closure $values): int
-    {
-        // TODO: Implement deleteMany() method.
+        return $this->builder()->where($by,$value)->delete();
     }
 
     public function query(): rawQuery

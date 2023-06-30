@@ -10,6 +10,4 @@ interface DataAccess
     public function createOrUpdate(array $attributes): Builder|Model;
 
     public function delete(mixed $value): int;
-
-    public function deleteMany(array|\Closure $values): int;
 }
