@@ -35,23 +35,23 @@ readonly class Service implements DataAccess, Queryable
         $this->model = $this->factory->app($modelName);
     }
 
-    public function createOrUpdate(array $attributes, string $though = 'id'): Builder|Model
+    public function createOrUpdate(array $attributes, string $by = 'id'): Builder|Model
     {
-        if ($byValue = $attributes[$though] ?? null) {
+        if ($byValue = $attributes[$by] ?? null) {
 
-            if ($though === 'id') {
-                unset($attributes[$though]);
+            if ($by === 'id') {
+                unset($attributes[$by]);
             }
 
-            return $this->builder()->updateOrCreate([$though => $byValue], $attributes);
+            return $this->builder()->updateOrCreate([$by => $byValue], $attributes);
         }
 
         return $this->builder()->create($attributes);
     }
 
-    public function delete(mixed $value, string $though = 'id'): int
+    public function delete(mixed $value, string $by = 'id'): int
     {
-        return $this->builder()->where($though, $value)->delete();
+        return $this->builder()->where($by, $value)->delete();
     }
 
     public function query(): rawQuery
