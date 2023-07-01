@@ -12,7 +12,7 @@ class CacheGuesserTest extends TestCase
     {
         $cacheGuesser = $this->getGuesser();
 
-      $key = $cacheGuesser->resolve('\\TestCache')->getResolved();
+      $key = $cacheGuesser->guess('\\TestCache')->getResolved();
 
       $this->assertIsString($key);
     }

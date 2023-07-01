@@ -40,7 +40,7 @@ readonly class Repository implements Queryable, DataAccess
 
     public function model(): Model
     {
-        $class = $this->resolvable->resolve(get_class($this))->getResolved();
+        $class = $this->resolvable->guess(get_class($this))->getResolved();
 
         return $this->factory->app($class);
     }

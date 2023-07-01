@@ -27,9 +27,14 @@ class Service implements DataAccess, Queryable
 
         $this->factory = $factory;
 
-        $this->model = $this->factory->app(
-            $this->resolvable->resolve(get_class($this))->getResolved()
-        );
+        $this->configure();
+    }
+
+    private function configure(): void
+    {
+        $modelName = $this->resolvable->guess(get_class($this))->getResolved();
+
+        $this->model = $this->factory->app($modelName);
     }
 
     public function createOrUpdate(array $attributes, string $by = 'id'): Builder|Model

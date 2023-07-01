@@ -10,7 +10,7 @@ abstract class Guesser implements Resolvable
 
     abstract public function getResolved(): string;
 
-    public function resolve(string $name): self
+    public function guess(string $name): self
     {
         if ($this->hasClass()) {
             return $this;

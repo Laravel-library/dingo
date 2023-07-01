@@ -12,7 +12,7 @@ class QueryGuesserTest extends TestCase
     {
         $guesser = $this->getGuesser();
 
-        $model = $guesser->resolve('TestService')->getResolved();
+        $model = $guesser->guess('TestService')->getResolved();
 
         $this->assertIsString($model);
     }

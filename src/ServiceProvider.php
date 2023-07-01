@@ -10,6 +10,7 @@ use Dingo\Services\Service;
 use Dingo\Support\Guesser\CacheGuesser;
 use Dingo\Support\Guesser\Contacts\Resolvable;
 use Dingo\Support\Guesser\QueryGuesser;
+use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Redis;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
@@ -26,7 +27,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->app->when([Service::class, Repository::class])
             ->needs(Factory::class)
-            ->give(Application::class);
+            ->give(fn(Container $app) => new Application($app));
 
         $this->app->when([Service::class, Repository::class])
             ->needs(Resolvable::class)

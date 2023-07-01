@@ -32,6 +32,6 @@ readonly class Cache implements Connection, Cacheable
 
     public function generateKey(): string
     {
-        return $this->resolvable->resolve(get_class($this))->getResolved();
+        return $this->resolvable->guess(get_class($this))->getResolved();
     }
 }
