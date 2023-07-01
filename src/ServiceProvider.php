@@ -3,8 +3,8 @@
 namespace Dingo;
 
 use Dingo\Boundary\Factory\Application;
-use Dingo\Boundary\Factory\Contacts\Factory;
 use Dingo\Caches\Cache;
+use Dingo\Query\Contacts\Queryable;
 use Dingo\Repositories\Repository;
 use Dingo\Services\Service;
 use Dingo\Support\Guesser\CacheGuesser;
@@ -26,12 +26,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     protected function bindSameDepends(): void
     {
         $this->app->when([Service::class, Repository::class])
-            ->needs(Factory::class)
-            ->give(fn(Container $app) => new Application($app));
-
-        $this->app->when([Service::class, Repository::class])
-            ->needs(Resolvable::class)
-            ->give(fn() => new QueryGuesser());
+            ->needs(Queryable::class)
+            ->give(fn(Container $app) => new Query\Queryable(
+                new QueryGuesser(), new Application($app)
+            ));
     }
 
     protected function bindingCacheableDepends(): void
