@@ -7,7 +7,7 @@ final class CacheGuesser extends Guesser
 
     public function getResolved(): string
     {
-        return 'cacheable:' . strtolower($this->class);
+        return 'cache:' . strtolower($this->class);
     }
 
     protected function hasSuffix(string $name): bool

@@ -1,11 +1,12 @@
 <?php
 
-namespace Dingo\Boundary;
+namespace Dingo\Boundary\Factory;
 
+use Dingo\Boundary\Factory;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
 
-readonly class Application implements Contacts\Factory
+readonly class Application implements Factory\Contacts\Factory
 {
     protected Container $container;
 
@@ -19,7 +20,7 @@ readonly class Application implements Contacts\Factory
         try {
             $concrete = $this->container->make($class);
         } catch (BindingResolutionException $e) {
-            throw new Exceptions\BindingResolutionException($e->getMessage(), 500);
+            throw new Factory\Exceptions\BindingResolutionException($e->getMessage(), 500);
         }
 
         return $concrete;

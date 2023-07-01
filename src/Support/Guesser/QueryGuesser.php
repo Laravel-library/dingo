@@ -2,7 +2,7 @@
 
 namespace Dingo\Support\Guesser;
 
-use Dingo\Boundary\SpecialModel;
+use Dingo\Boundary\Particular\SpecialModel;
 
 final class QueryGuesser extends Guesser
 {

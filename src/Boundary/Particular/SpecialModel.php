@@ -1,6 +1,6 @@
 <?php
 
-namespace Dingo\Boundary;
+namespace Dingo\Boundary\Particular;
 
 use Illuminate\Database\Eloquent\Model;
 

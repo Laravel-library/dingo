@@ -1,6 +1,6 @@
 <?php
 
-namespace Dingo\Boundary\Exceptions;
+namespace Dingo\Boundary\Factory\Exceptions;
 
 use RuntimeException;
 

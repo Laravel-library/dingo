@@ -2,8 +2,8 @@
 
 namespace Dingo;
 
-use Dingo\Boundary\Application;
-use Dingo\Boundary\Contacts\Factory;
+use Dingo\Boundary\Factory\Application;
+use Dingo\Boundary\Factory\Contacts\Factory;
 use Dingo\Caches\Cache;
 use Dingo\Repositories\Repository;
 use Dingo\Services\Service;

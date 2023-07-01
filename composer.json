@@ -11,6 +11,7 @@
     "illuminate/support": "^10.13.5",
     "illuminate/database": "^10.13.5",
     "illuminate/http": "^10.13.5",
+    "illuminate/redis": "^10.13.5",
     "phpunit/phpunit": "^10.2"
   },
   "license": "MIT",

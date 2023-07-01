@@ -2,32 +2,27 @@
 
 namespace Dingo\Caches;
 
+use Dingo\Boundary\Connection\Contacts\Connector;
 use Dingo\Caches\Contacts\Cacheable;
-use Dingo\Caches\Contacts\Connection;
 use Dingo\Support\Guesser\Contacts\Resolvable;
 use Redis;
 
-readonly class Cache implements Connection, Cacheable
+readonly class Cache implements Cacheable
 {
 
-    private Redis $redis;
+    protected Redis $redis;
 
     protected string $key;
 
     private Resolvable $resolvable;
 
-    public function __construct(Redis $redis, Resolvable $resolvable)
+    public function __construct(Connector $connector, Resolvable $resolvable)
     {
-        $this->redis = $redis;
+        $this->redis = $connector->client();
 
         $this->resolvable = $resolvable;
 
         $this->key = $this->generateKey();
-    }
-
-    final public function client(): Redis
-    {
-        return $this->redis;
     }
 
     public function generateKey(): string

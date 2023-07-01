@@ -1,6 +1,6 @@
 <?php
 
-namespace Dingo\Boundary\Contacts;
+namespace Dingo\Boundary\Factory\Contacts;
 
 interface Factory
 {

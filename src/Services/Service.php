@@ -2,7 +2,7 @@
 
 namespace Dingo\Services;
 
-use Dingo\Boundary\Contacts\Factory;
+use Dingo\Boundary\Factory\Contacts\Factory;
 use Dingo\Query\Contacts\Queryable;
 use Dingo\Services\Contacts\DataAccess;
 use Dingo\Support\Guesser\Contacts\Resolvable;
