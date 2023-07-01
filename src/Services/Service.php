@@ -10,16 +10,14 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Contracts\Database\Query\Builder as rawQuery;
 use Illuminate\Database\Eloquent\Model;
 
-class Service implements DataAccess, Queryable
+readonly class Service implements DataAccess, Queryable
 {
 
-    private readonly Resolvable $resolvable;
+    private Resolvable $resolvable;
 
-    private readonly Factory $factory;
+    private Factory $factory;
 
-    private readonly Model $model;
-
-    private array $ignores = [];
+    private Model $model;
 
     public function __construct(Resolvable $resolvable, Factory $factory)
     {
@@ -37,23 +35,23 @@ class Service implements DataAccess, Queryable
         $this->model = $this->factory->app($modelName);
     }
 
-    public function createOrUpdate(array $attributes, string $by = 'id'): Builder|Model
+    public function createOrUpdate(array $attributes, string $though = 'id'): Builder|Model
     {
-        if ($byValue = $attributes[$by] ?? null) {
+        if ($byValue = $attributes[$though] ?? null) {
 
-            if ($by === 'id') {
-                unset($attributes[$by]);
+            if ($though === 'id') {
+                unset($attributes[$though]);
             }
 
-            return $this->builder()->updateOrCreate([$by => $byValue], $attributes);
+            return $this->builder()->updateOrCreate([$though => $byValue], $attributes);
         }
 
         return $this->builder()->create($attributes);
     }
 
-    public function delete(mixed $value, string $by = 'id'): int
+    public function delete(mixed $value, string $though = 'id'): int
     {
-        return $this->builder()->where($by, $value)->delete();
+        return $this->builder()->where($though, $value)->delete();
     }
 
     public function query(): rawQuery
@@ -64,15 +62,5 @@ class Service implements DataAccess, Queryable
     public function builder(): Builder
     {
         return $this->model->newModelQuery();
-    }
-
-    public function updateJson(array|string $attributes, int $id): void
-    {
-
-    }
-
-    public function ignore(array|string $attributes): DataAccess
-    {
-
     }
 }
