@@ -4,7 +4,7 @@ namespace Dingo\Repositories;
 
 use Dingo\Query\Contacts\Queryable;
 
-readonly class Repository
+abstract readonly class Repository
 {
     protected Queryable $queryable;
 

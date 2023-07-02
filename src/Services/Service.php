@@ -7,7 +7,7 @@ use Dingo\Services\Contacts\DataAccess;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-readonly class Service implements DataAccess
+abstract readonly class Service implements DataAccess
 {
 
     protected Queryable $queryable;

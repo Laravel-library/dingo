@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Unit;
+namespace Tests\Unit\Response;
 
 use Dingo\Support\Http\Contacts\Responder;
 use Dingo\Support\Http\Response;
