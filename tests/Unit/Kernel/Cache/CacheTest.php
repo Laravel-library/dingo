@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Kernel\Cache;
 
-use Dingo\Boundary\Connection\CacheConnection;
+use Dingo\Boundary\Connection\CacheConnector;
 use Dingo\Caches\Cache;
 use Dingo\Support\Guesser\CacheGuesser;
 use Illuminate\Redis\RedisManager;
@@ -23,11 +23,11 @@ class CacheTest extends TestCase
     {
         BootStrap::boot();
 
-        CacheConnection::customConnection('cache');
+        CacheConnector::customConnection('cache');
 
         return [
             [new ExampleCache(
-                CacheConnection::getInstance(new RedisManager(BootStrap::app(),'redis',[])),
+                CacheConnector::getInstance(new RedisManager(BootStrap::app(),'redis',[])),
                 BootStrap::app()->make(CacheGuesser::class)
              )],
         ];

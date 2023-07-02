@@ -2,7 +2,8 @@
 
 namespace Dingo;
 
-use Dingo\Boundary\Connection\RedisConnection;
+use Dingo\Boundary\Connection\Contacts\Connector;
+use Dingo\Boundary\Connection\CacheConnector;
 use Dingo\Boundary\Factory\Application;
 use Dingo\Caches\Cache;
 use Dingo\Query\Contacts\Queryable;
@@ -19,7 +20,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot(): void
     {
 
-        $this->bindingCacheableDepends();
+        $this->bindingCacheableContextual();
 
         $this->sameContextualBindings();
     }
@@ -28,23 +29,30 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->app->bind(Queryable::class,
             fn(Container $app) => new QueryBuilder(
-            new QueryGuesser(),
-            new Application($app),
-        ));
+                new QueryGuesser(),
+                new Application($app),
+            ));
 
         $this->app->when([Service::class, Repository::class])
             ->needs(Queryable::class)
             ->give(Queryable::class);
     }
 
-    protected function bindingCacheableDepends(): void
+    protected function bindingCacheableContextual(): void
     {
-        $this->app->when(Cache::class)
-            ->needs(Resolvable::class)
-            ->give(fn() => new CacheGuesser());
+        $this->app->bind(
+            Connector::class,
+            fn(Container $app) => CacheConnector::getInstance($app->make('redis'))
+        );
+
+        $this->app->bind(Resolvable::class, fn() => new CacheGuesser());
 
         $this->app->when(Cache::class)
-            ->needs(\Redis::class)
-            ->give(fn(Container $app) => new RedisConnection($app->get('redis')));
+            ->needs(Resolvable::class)
+            ->give(Resolvable::class);
+
+        $this->app->when(Cache::class)
+            ->needs(Connector::class)
+            ->give(Connector::class);
     }
 }
