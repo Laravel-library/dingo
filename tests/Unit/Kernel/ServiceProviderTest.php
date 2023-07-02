@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Unit\Kernel;
+namespace Tests\Unit\Kernel;
 
 use Dingo\ServiceProvider;
 use Illuminate\Container\Container;

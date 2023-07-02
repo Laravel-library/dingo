@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Unit\Guesser;
+namespace Tests\Unit\Guesser;
 
 use Dingo\Support\Guesser\Contacts\Resolvable;
 use Dingo\Support\Guesser\QueryGuesser;
