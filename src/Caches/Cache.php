@@ -7,7 +7,7 @@ use Dingo\Caches\Contacts\Cacheable;
 use Dingo\Support\Guesser\Contacts\Resolvable;
 use Redis;
 
-readonly class Cache implements Cacheable
+abstract readonly class Cache implements Cacheable
 {
 
     protected Redis $redis;

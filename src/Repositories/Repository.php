@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Dingo\Repositories;
 
 use Dingo\Query\Contacts\Queryable;
 
-readonly class Repository
+abstract readonly class Repository
 {
     protected Queryable $queryable;
 
@@ -14,7 +12,6 @@ readonly class Repository
     {
         $this->queryable = $queryable;
 
-        $this->queryable->though(get_class($this));
+        $this->queryable->binding(get_class($this));
     }
-
 }

@@ -2,44 +2,57 @@
 
 namespace Dingo;
 
+use Dingo\Boundary\Connection\Contacts\Connector;
+use Dingo\Boundary\Connection\CacheConnector;
 use Dingo\Boundary\Factory\Application;
 use Dingo\Caches\Cache;
 use Dingo\Query\Contacts\Queryable;
+use Dingo\Query\QueryBuilder;
 use Dingo\Repositories\Repository;
 use Dingo\Services\Service;
 use Dingo\Support\Guesser\CacheGuesser;
 use Dingo\Support\Guesser\Contacts\Resolvable;
 use Dingo\Support\Guesser\QueryGuesser;
 use Illuminate\Container\Container;
-use Illuminate\Support\Facades\Redis;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     public function boot(): void
     {
 
-        $this->bindingCacheableDepends();
+        $this->bindingCacheableContextual();
 
-        $this->bindSameDepends();
+        $this->sameContextualBindings();
     }
 
-    protected function bindSameDepends(): void
+    protected function sameContextualBindings(): void
     {
+        $this->app->bind(Queryable::class,
+            fn(Container $app) => new QueryBuilder(
+                new QueryGuesser(),
+                new Application($app),
+            ));
+
         $this->app->when([Service::class, Repository::class])
             ->needs(Queryable::class)
-            ->give(fn(Container $app) => new Query\Queryable(
-                new QueryGuesser(), new Application($app)
-            ));
+            ->give(Queryable::class);
     }
 
-    protected function bindingCacheableDepends(): void
+    protected function bindingCacheableContextual(): void
     {
-        $this->app->when(Cache::class)
-            ->needs(Resolvable::class)
-            ->give(fn() => new CacheGuesser());
+        $this->app->bind(
+            Connector::class,
+            fn(Container $app) => CacheConnector::getInstance($app->make('redis'))
+        );
+
+        $this->app->bind(Resolvable::class, fn() => new CacheGuesser());
 
         $this->app->when(Cache::class)
-            ->needs(\Redis::class)
-            ->give(fn() => Redis::connection()->client());
+            ->needs(Resolvable::class)
+            ->give(Resolvable::class);
+
+        $this->app->when(Cache::class)
+            ->needs(Connector::class)
+            ->give(Connector::class);
     }
 }

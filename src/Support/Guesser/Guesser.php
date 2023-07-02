@@ -16,7 +16,7 @@ abstract class Guesser implements Resolvable
             return $this;
         }
 
-        $this->bindingConcrete($name);
+        $this->classNameBinding($name);
 
         return $this;
     }
@@ -26,7 +26,7 @@ abstract class Guesser implements Resolvable
         return !is_null($this->class);
     }
 
-    private function bindingConcrete(string $name): void
+    private function classNameBinding(string $name): void
     {
         $clazz = substr($name, strripos($name, '\\') + 1);
 
@@ -34,12 +34,14 @@ abstract class Guesser implements Resolvable
             $clazz = $this->replaceSuffix($clazz);
         }
 
-        $this->class = $clazz;
+        $this->bind($clazz);
     }
 
     abstract protected function hasSuffix(string $name): bool;
 
     abstract protected function replaceSuffix(string $clazz): string;
+
+    abstract protected function bind(string $class): void;
 
     abstract protected function suffix(): string|array;
 }

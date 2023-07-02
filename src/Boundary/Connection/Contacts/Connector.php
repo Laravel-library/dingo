@@ -5,7 +5,9 @@ namespace Dingo\Boundary\Connection\Contacts;
 interface Connector
 {
 
+    public function client(): mixed;
+
     public function connection(): string;
 
-    public function client(): mixed;
+    public static function customConnection(string $name): void;
 }

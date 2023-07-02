@@ -20,6 +20,11 @@ final class CacheGuesser extends Guesser
         return substr($clazz, 0, -strlen($this->suffix()));
     }
 
+    protected function bind(string $class): void
+    {
+        $this->class = $class;
+    }
+
     public function suffix(): string
     {
         return 'Cache';

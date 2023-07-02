@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Dingo\Services;
 
 use Dingo\Query\Contacts\Queryable;
@@ -9,7 +7,7 @@ use Dingo\Services\Contacts\DataAccess;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-readonly class Service implements DataAccess
+abstract readonly class Service implements DataAccess
 {
 
     protected Queryable $queryable;
@@ -18,7 +16,7 @@ readonly class Service implements DataAccess
     {
         $this->queryable = $queryable;
 
-        $this->queryable->though(get_class($this));
+        $this->queryable->binding(get_class($this));
     }
 
     public function createOrUpdate(array $attributes, string $by = 'id'): Builder|Model
@@ -33,11 +31,6 @@ readonly class Service implements DataAccess
         }
 
         return $this->queryable->builder()->create($attributes);
-    }
-
-    public function updateJson(array|string $attributes): void
-    {
-
     }
 
     public function delete(mixed $value, string $by = 'id'): int
