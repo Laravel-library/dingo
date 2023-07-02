@@ -14,7 +14,7 @@ class CacheTest extends TestCase
 {
 
     #[DataProvider('getExampleCache')]
-    public function testCacheInstanceOfAbstractCache(ExampleCache $cache): void
+    public function testCacheConnection(ExampleCache $cache): void
     {
         $this->assertInstanceOf(Cache::class, $cache);
     }
@@ -23,7 +23,7 @@ class CacheTest extends TestCase
     {
         BootStrap::boot();
 
-        CacheConnector::customConnection('cache');
+        CacheConnector::customConnection('custom');
 
         return [
             [new ExampleCache(

@@ -6,7 +6,7 @@ use Dingo\Support\Http\Contacts\Responder;
 use Illuminate\Http\JsonResponse;
 use JetBrains\PhpStorm\ArrayShape;
 
-readonly class Response implements Responder
+final readonly class Response implements Responder
 {
 
     public function render(array|string $data, int $code): JsonResponse
