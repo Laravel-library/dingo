@@ -2,37 +2,21 @@
 
 namespace Dingo\Services;
 
-use Dingo\Boundary\Factory\Contacts\Factory;
 use Dingo\Query\Contacts\Queryable;
 use Dingo\Services\Contacts\DataAccess;
-use Dingo\Support\Guesser\Contacts\Resolvable;
 use Illuminate\Contracts\Database\Eloquent\Builder;
-use Illuminate\Contracts\Database\Query\Builder as rawQuery;
 use Illuminate\Database\Eloquent\Model;
 
-readonly class Service implements DataAccess, Queryable
+readonly class Service implements DataAccess
 {
 
-    private Resolvable $resolvable;
+    protected Queryable $queryable;
 
-    private Factory $factory;
-
-    private Model $model;
-
-    public function __construct(Resolvable $resolvable, Factory $factory)
+    public function __construct(Queryable $queryable)
     {
-        $this->resolvable = $resolvable;
+        $this->queryable = $queryable;
 
-        $this->factory = $factory;
-
-        $this->configure();
-    }
-
-    private function configure(): void
-    {
-        $modelName = $this->resolvable->guess(get_class($this))->getResolved();
-
-        $this->model = $this->factory->app($modelName);
+        $this->queryable->binding(get_class($this));
     }
 
     public function createOrUpdate(array $attributes, string $by = 'id'): Builder|Model
@@ -43,24 +27,14 @@ readonly class Service implements DataAccess, Queryable
                 unset($attributes[$by]);
             }
 
-            return $this->builder()->updateOrCreate([$by => $byValue], $attributes);
+            return $this->queryable->builder()->updateOrCreate([$by => $byValue], $attributes);
         }
 
-        return $this->builder()->create($attributes);
+        return $this->queryable->builder()->create($attributes);
     }
 
     public function delete(mixed $value, string $by = 'id'): int
     {
-        return $this->builder()->where($by, $value)->delete();
-    }
-
-    public function query(): rawQuery
-    {
-        return $this->model->newQuery();
-    }
-
-    public function builder(): Builder
-    {
-        return $this->model->newModelQuery();
+        return $this->queryable->builder()->where($by, $value)->delete();
     }
 }
