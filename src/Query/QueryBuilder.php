@@ -12,9 +12,11 @@ final class QueryBuilder implements Contacts\Queryable
 {
     protected ?string $className = null;
 
-    private Resolvable $resolvable;
+    protected ?Model $model = null;
 
-    private Factory $factory;
+    private readonly Resolvable $resolvable;
+
+    private readonly Factory $factory;
 
     public function __construct(Resolvable $resolvable, Factory $factory)
     {
@@ -40,9 +42,25 @@ final class QueryBuilder implements Contacts\Queryable
 
     public function model(): Model
     {
+        if ($this->hasModel()) {
+            return $this->model;
+        }
+
+        return $this->resolveModel();
+    }
+
+    protected function hasModel(): bool
+    {
+        return !is_null($this->model);
+    }
+
+    protected function resolveModel(): Model
+    {
         $class = $this->resolvable->guess(get_class($this))->getResolved();
 
-        return $this->factory->app($class);
+        $this->model = $this->factory->app($class);
+
+        return $this->model;
     }
 
     public function binding(string $class): void
