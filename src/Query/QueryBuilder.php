@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dingo\Query;
 
 use Dingo\Boundary\Factory\Contacts\Factory;
