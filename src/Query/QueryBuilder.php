@@ -42,11 +42,7 @@ final class QueryBuilder implements Contacts\Queryable
 
     public function model(): Model
     {
-        if ($this->hasModel()) {
-            return $this->model;
-        }
-
-        return $this->resolveModel();
+        return $this->hasModel() ? $this->model : $this->resolveModel();
     }
 
     protected function hasModel(): bool
