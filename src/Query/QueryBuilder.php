@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 final class QueryBuilder implements Contacts\Queryable
 {
-    protected ?string $className = null;
+    protected ?string $modelName = null;
 
     protected ?Model $model = null;
 
@@ -52,15 +52,27 @@ final class QueryBuilder implements Contacts\Queryable
 
     protected function resolveModel(): Model
     {
-        $class = $this->resolvable->guess(get_class($this))->getResolved();
+        $this->prepareClass();
 
-        $this->model = $this->factory->app($class);
+        $this->model = $this->factory->app($this->modelName);
 
         return $this->model;
     }
 
+    protected function prepareClass(): void
+    {
+        if (!$this->hasClass()) {
+            $this->modelName = $this->resolvable->guess($this->modelName)->getResolved();
+        }
+    }
+
+    protected function hasClass(): bool
+    {
+        return !is_null($this->modelName);
+    }
+
     public function binding(string $class): void
     {
-        $this->className = $class;
+        $this->modelName = $class;
     }
 }
