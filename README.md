@@ -1,6 +1,6 @@
-# About Dingo
+### About Dingo
 
-### config redis cache db
+#### config cache db
 
 Edit your laravel ServiceProvider, And join the database where you configure Redis Driver.
 
