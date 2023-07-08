@@ -11,8 +11,8 @@ abstract readonly class Repository
 
     public function __construct(Queryable $queryable, Resolvable $resolvable)
     {
-        $this->queryable = $queryable;
-
         $resolvable->binding(get_class($this));
+
+        $this->queryable = $queryable;
     }
 }

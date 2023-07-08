@@ -15,9 +15,9 @@ abstract readonly class Service implements DataAccess
 
     public function __construct(Queryable $queryable, Resolvable $resolvable)
     {
-        $this->queryable = $queryable;
-
         $resolvable->binding(get_class($this));
+
+        $this->queryable = $queryable;
     }
 
     public function createOrUpdate(array $attributes, string $by = 'id'): Builder|Model
