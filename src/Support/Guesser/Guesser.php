@@ -2,9 +2,9 @@
 
 namespace Dingo\Support\Guesser;
 
-use Dingo\Support\Guesser\Contacts\Resolvable;
+use Dingo\Support\Guesser\Contacts\Guessable;
 
-abstract class Guesser implements Resolvable
+abstract class Guesser implements Guessable
 {
     protected ?string $class = null;
 

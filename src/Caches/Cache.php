@@ -4,7 +4,7 @@ namespace Dingo\Caches;
 
 use Dingo\Boundary\Connection\Contacts\Connector;
 use Dingo\Caches\Contacts\Cacheable;
-use Dingo\Support\Guesser\Contacts\Resolvable;
+use Dingo\Support\Guesser\Contacts\Guessable;
 use Redis;
 
 abstract readonly class Cache implements Cacheable
@@ -14,9 +14,9 @@ abstract readonly class Cache implements Cacheable
 
     protected string $key;
 
-    private Resolvable $resolvable;
+    private Guessable $resolvable;
 
-    public function __construct(Connector $connector, Resolvable $resolvable)
+    public function __construct(Connector $connector, Guessable $resolvable)
     {
         $this->redis = $connector->client();
 

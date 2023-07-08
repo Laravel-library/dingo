@@ -11,7 +11,7 @@ use Dingo\Query\QueryBuilder;
 use Dingo\Repositories\Repository;
 use Dingo\Services\Service;
 use Dingo\Support\Guesser\CacheGuesser;
-use Dingo\Support\Guesser\Contacts\Resolvable;
+use Dingo\Support\Guesser\Contacts\Guessable;
 use Dingo\Support\Guesser\QueryGuesser;
 use Illuminate\Container\Container;
 
@@ -45,11 +45,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             fn(Container $app) => CacheConnector::getInstance($app->make('redis'))
         );
 
-        $this->app->bind(Resolvable::class, fn() => new CacheGuesser());
+        $this->app->bind(Guessable::class, fn() => new CacheGuesser());
 
         $this->app->when(Cache::class)
-            ->needs(Resolvable::class)
-            ->give(Resolvable::class);
+            ->needs(Guessable::class)
+            ->give(Guessable::class);
 
         $this->app->when(Cache::class)
             ->needs(Connector::class)

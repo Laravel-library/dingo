@@ -2,7 +2,7 @@
 
 namespace Dingo\Support\Guesser\Contacts;
 
-interface Resolvable
+interface Guessable
 {
     public function guess(string $name): self;
 

@@ -3,14 +3,14 @@
 namespace Tests\Unit\Guesser;
 
 use Dingo\Support\Guesser\CacheGuesser;
-use Dingo\Support\Guesser\Contacts\Resolvable;
+use Dingo\Support\Guesser\Contacts\Guessable;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class CacheGuesserTest extends TestCase
 {
     #[DataProvider('getGuesser')]
-    public function testResolveNotNull(Resolvable $resolvable): void
+    public function testResolveNotNull(Guessable $resolvable): void
     {
         $key = $resolvable->guess('\\TestCache')->getResolved();
 
@@ -18,7 +18,7 @@ class CacheGuesserTest extends TestCase
     }
 
     #[DataProvider('getGuesser')]
-    public function testResolvedEqualTest(Resolvable $resolvable): void
+    public function testResolvedEqualTest(Guessable $resolvable): void
     {
         $name = $resolvable->guess('\\TestCache')->getResolved();
 
