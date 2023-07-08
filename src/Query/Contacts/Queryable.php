@@ -16,6 +16,4 @@ interface Queryable
     public function table(): string;
 
     public function model(): Model;
-
-    public function binding(string $class): void;
 }
