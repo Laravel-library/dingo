@@ -14,19 +14,19 @@ abstract readonly class Cache implements Cacheable
 
     protected string $key;
 
-    private Guessable $resolvable;
+    private Guessable $guessable;
 
     public function __construct(Connector $connector, Guessable $resolvable)
     {
         $this->redis = $connector->client();
 
-        $this->resolvable = $resolvable;
+        $this->guessable = $resolvable;
 
         $this->key = $this->generateKey();
     }
 
     public function generateKey(): string
     {
-        return $this->resolvable->guess(get_class($this))->getResolved();
+        return $this->guessable->guess(get_class($this))->getResolved();
     }
 }
