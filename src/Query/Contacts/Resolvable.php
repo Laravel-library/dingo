@@ -8,5 +8,5 @@ interface Resolvable
 {
     public function binding(string $class): void;
 
-    public function getConcrete(): string;
+    public function getConcrete(): Model;
 }
