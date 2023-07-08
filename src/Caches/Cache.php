@@ -16,11 +16,11 @@ abstract readonly class Cache implements Cacheable
 
     private Guessable $guessable;
 
-    public function __construct(Connector $connector, Guessable $resolvable)
+    public function __construct(Connector $connector, Guessable $guessable)
     {
         $this->redis = $connector->client();
 
-        $this->guessable = $resolvable;
+        $this->guessable = $guessable;
 
         $this->key = $this->generateKey();
     }
