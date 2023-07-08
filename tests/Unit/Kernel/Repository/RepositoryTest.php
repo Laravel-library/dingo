@@ -15,7 +15,6 @@ final class RepositoryTest extends TestCase
     #[DataProvider('getExampleRepository')]
     public function testRepositoryQueryableModelMethodReturnSpecialModelInstance(ExampleRepository $repository): void
     {
-        dd($repository->getQuery()->model());
         $this->assertInstanceOf(SpecialModel::class,$repository->getQuery()->model());
     }
 

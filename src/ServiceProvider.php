@@ -5,9 +5,12 @@ namespace Dingo;
 use Dingo\Boundary\Connection\Contacts\Connector;
 use Dingo\Boundary\Connection\CacheConnector;
 use Dingo\Boundary\Factory\Application;
+use Dingo\Boundary\Factory\Contacts\Factory;
 use Dingo\Caches\Cache;
 use Dingo\Query\Contacts\Queryable;
+use Dingo\Query\Contacts\Resolvable;
 use Dingo\Query\QueryBuilder;
+use Dingo\Query\Resolver;
 use Dingo\Repositories\Repository;
 use Dingo\Services\Service;
 use Dingo\Support\Guesser\CacheGuesser;
@@ -20,18 +23,28 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot(): void
     {
 
+        $this->registerSingleton();
+
         $this->bindingCacheableContextual();
 
         $this->sameContextualBindings();
     }
 
+    protected function registerSingleton(): void
+    {
+        $this->app->singleton(Resolvable::class, fn() => new Resolver(new QueryGuesser()));
+
+        $this->app->singleton(Factory::class, fn(Container $app) => new Application($app));
+
+        $this->app->singleton(
+            Connector::class,
+            fn(Container $app) => CacheConnector::getInstance($app->make('redis'))
+        );
+    }
+
     protected function sameContextualBindings(): void
     {
-        $this->app->bind(Queryable::class,
-            fn(Container $app) => new QueryBuilder(
-                new QueryGuesser(),
-                new Application($app),
-            ));
+        $this->app->bind(Queryable::class, QueryBuilder::class);
 
         $this->app->when([Service::class, Repository::class])
             ->needs(Queryable::class)
@@ -40,10 +53,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     protected function bindingCacheableContextual(): void
     {
-        $this->app->bind(
-            Connector::class,
-            fn(Container $app) => CacheConnector::getInstance($app->make('redis'))
-        );
 
         $this->app->bind(Guessable::class, fn() => new CacheGuesser());
 

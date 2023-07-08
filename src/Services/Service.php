@@ -3,6 +3,7 @@
 namespace Dingo\Services;
 
 use Dingo\Query\Contacts\Queryable;
+use Dingo\Query\Contacts\Resolvable;
 use Dingo\Services\Contacts\DataAccess;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -12,11 +13,11 @@ abstract readonly class Service implements DataAccess
 
     protected Queryable $queryable;
 
-    public function __construct(Queryable $queryable)
+    public function __construct(Queryable $queryable, Resolvable $resolvable)
     {
         $this->queryable = $queryable;
 
-        $this->queryable->binding(get_class($this));
+        $resolvable->binding(get_class($this));
     }
 
     public function createOrUpdate(array $attributes, string $by = 'id'): Builder|Model
