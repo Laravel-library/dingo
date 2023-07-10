@@ -32,9 +32,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     protected function registerSingleton(): void
     {
-        $this->app->singleton(Resolvable::class, fn() => new Resolver(new QueryGuesser()));
 
         $this->app->singleton(Factory::class, fn(Container $app) => new Application($app));
+
+        $this->app->singleton(Resolvable::class, fn(Container $app) => new Resolver(new QueryGuesser(), $app->make(Factory::class)));
 
         $this->app->singleton(
             Connector::class,
