@@ -33,14 +33,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     protected function registerSingleton(): void
     {
 
+        $this->app->singleton(Connector::class,new CacheConnector($this->app->make('redis')));
+
         $this->app->singleton(Factory::class, fn(Container $app) => new Application($app));
 
         $this->app->singleton(Resolvable::class, fn(Container $app) => new Resolver(new QueryGuesser(), $app->make(Factory::class)));
-
-        $this->app->singleton(
-            Connector::class,
-            fn(Container $app) => CacheConnector::getInstance($app->make('redis'))
-        );
     }
 
     protected function sameContextualBindings(): void

@@ -9,5 +9,7 @@ interface Connector
 
     public function connection(): string;
 
-    public static function customConnection(string $name): void;
+    public function defaultConnection(): string;
+
+    public function withConnection(string $name): void;
 }

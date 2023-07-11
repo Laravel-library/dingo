@@ -8,13 +8,11 @@ use Redis;
 
 final class CacheConnector implements Connector
 {
-    protected RedisManager $redisManager;
+    protected readonly RedisManager $redisManager;
 
-    protected static ?string $connection = null;
+    protected ?string $connection = null;
 
-    private static ?self $instance = null;
-
-    private function __construct(RedisManager $redisManager)
+    public function __construct(RedisManager $redisManager)
     {
         $this->redisManager = $redisManager;
     }
@@ -26,22 +24,16 @@ final class CacheConnector implements Connector
 
     public function connection(): string
     {
-        return is_null(self::$connection) ? 'default' : self::$connection;
+        return $this->connection ?? $this->defaultConnection();
     }
 
-    public static function customConnection(string $name = null): void
+    public function defaultConnection(): string
     {
-        if (!is_null($name)) {
-            self::$connection = $name;
-        }
+        return 'default';
     }
 
-    public static function getInstance(RedisManager $redisManager): self
+    public function withConnection(string $name): void
     {
-        if (empty(self::$instance)) {
-            self::$instance = new self($redisManager);
-        }
-
-        return self::$instance;
+        $this->connection = $name;
     }
 }
