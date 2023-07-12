@@ -2,12 +2,9 @@
 
 namespace Tests\Unit\Kernel\Cache;
 
-use Dingo\Boundary\Connection\CacheConnector;
 use Dingo\Caches\Cache;
 use Dingo\Support\Facades\RedisClient;
-use Dingo\Support\Guesser\CacheGuesser;
 use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Redis\RedisManager;
 use Illuminate\Support\Facades\Facade;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
