@@ -13,13 +13,10 @@ use Dingo\Query\QueryBuilder;
 use Dingo\Query\Resolver;
 use Dingo\Repositories\Repository;
 use Dingo\Services\Service;
-use Dingo\Support\Facades\RedisClient;
 use Dingo\Support\Guesser\CacheGuesser;
 use Dingo\Support\Guesser\Contacts\Guessable;
 use Dingo\Support\Guesser\QueryGuesser;
 use Illuminate\Container\Container;
-use Illuminate\Redis\RedisManager;
-use Illuminate\Support\Facades\Facade;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -35,7 +32,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     protected function registerSingleton(): void
     {
-        $this->app->bind(RedisManager::class, fn($app) => new RedisManager($app, 'redis', []));
 
         $this->app->singleton(Connector::class, CacheConnector::class);
 
