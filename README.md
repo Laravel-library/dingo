@@ -1,21 +1,19 @@
 ### About Dingo
 
-#### config cache db
-
-Edit your laravel ServiceProvider, And join the database where you configure Redis Driver.
+To customize the connection for your cache driver, please invoke the `withConnection` method of `RedisClient` within the `ServiceProvider`.
 
 ```php
 
 namespace App\Providers;
 
-use Dingo\Boundary\Connection\CacheConnector;
+use Dingo\Support\Facades\RedisClient;
 
 class ServiceProvider 
 {
 
     public function register():void
     {
-        CacheConnector::customConnection('custom_redis_db');
+        RedisClient::withConnection('custom_connection');
     }
 
 }
