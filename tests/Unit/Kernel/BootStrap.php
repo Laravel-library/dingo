@@ -10,7 +10,7 @@ final readonly class BootStrap
 
     public static function boot(): void
     {
-        self::makeServiceProvider()->boot();;
+        self::makeServiceProvider()->boot();
     }
 
     protected static function makeServiceProvider(): ServiceProvider

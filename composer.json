@@ -17,7 +17,8 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Dingo\\": "src/"
+      "Dingo\\": "src/",
+      "Dingo\\Support\\Facades\\": "src/Support/Facades/"
     }
   },
   "autoload-dev": {
@@ -29,7 +30,10 @@
     "laravel": {
       "providers": [
         "Dingo\\ServiceProvider"
-      ]
+      ],
+      "aliases": {
+        "RedisClient": "Dingo\\Support\\Facades\\RedisClient"
+      }
     }
   },
   "minimum-stability": "stable"
