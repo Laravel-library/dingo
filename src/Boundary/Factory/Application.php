@@ -3,8 +3,8 @@
 namespace Dingo\Boundary\Factory;
 
 use Dingo\Boundary\Factory;
-use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Contracts\Container\Container;
 
 readonly class Application implements Factory\Contacts\Factory
 {
