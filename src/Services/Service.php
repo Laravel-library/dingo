@@ -3,7 +3,7 @@
 namespace Dingo\Services;
 
 use Dingo\Query\Contacts\Queryable;
-use Dingo\Query\Contacts\Resolvable;
+use Dingo\Resolution\Contacts\Resolvable;
 use Dingo\Services\Contacts\DataAccess;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

@@ -1,13 +1,13 @@
 <?php
 
-namespace Dingo\Query;
+namespace Dingo\Resolution;
 
 use Dingo\Boundary\Factory\Contacts\Factory;
-use Dingo\Query\Contacts\Resolvable;
+use Dingo\Resolution\Contacts\Resolvable;
 use Dingo\Support\Guesser\Contacts\Guessable;
 use Illuminate\Database\Eloquent\Model;
 
-final class Resolver implements Resolvable
+final class QueryResolver implements Resolvable
 {
 
     protected ?string $class = null;

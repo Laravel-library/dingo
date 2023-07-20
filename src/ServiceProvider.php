@@ -2,14 +2,14 @@
 
 namespace Dingo;
 
-use Dingo\Boundary\Connection\Contacts\Connector;
 use Dingo\Boundary\Connection\CacheConnector;
+use Dingo\Boundary\Connection\Contacts\Connector;
 use Dingo\Boundary\Factory\Application;
 use Dingo\Boundary\Factory\Contacts\Factory;
 use Dingo\Query\Contacts\Queryable;
-use Dingo\Query\Contacts\Resolvable;
 use Dingo\Query\QueryBuilder;
-use Dingo\Query\Resolver;
+use Dingo\Resolution\Contacts\Resolvable;
+use Dingo\Resolution\QueryResolver;
 use Dingo\Support\Guesser\CacheGuesser;
 use Dingo\Support\Guesser\Contacts\Guessable;
 use Dingo\Support\Guesser\QueryGuesser;
@@ -27,6 +27,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
         $this->app->singleton(Factory::class, fn(Container $app) => new Application($app));
 
-        $this->app->singleton(Resolvable::class, fn(Container $app) => new Resolver(new QueryGuesser(), $app->make(Factory::class)));
+        $this->app->singleton(Resolvable::class, fn(Container $app) => new QueryResolver(new QueryGuesser(), $app->make(Factory::class)));
     }
 }

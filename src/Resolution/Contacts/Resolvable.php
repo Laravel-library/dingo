@@ -1,6 +1,6 @@
 <?php
 
-namespace Dingo\Query\Contacts;
+namespace Dingo\Resolution\Contacts;
 
 use Illuminate\Database\Eloquent\Model;
 

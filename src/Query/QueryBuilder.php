@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Dingo\Query;
 
-use Dingo\Query\Contacts\Resolvable;
+use Dingo\Resolution\Contacts\Resolvable;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Contracts\Database\Query\Builder as rawQuery;
 use Illuminate\Database\Eloquent\Model;

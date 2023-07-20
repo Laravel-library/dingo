@@ -3,8 +3,8 @@
 namespace Dingo\Repositories;
 
 use Dingo\Query\Contacts\Queryable;
-use Dingo\Query\Contacts\Resolvable;
 use Dingo\Repositories\Contacts\Query;
+use Dingo\Resolution\Contacts\Resolvable;
 use Illuminate\Database\Eloquent\Model;
 
 abstract readonly class Repository implements Query
