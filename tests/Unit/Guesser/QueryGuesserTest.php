@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Guesser;
 
-use Dingo\Support\Guesser\Contacts\Guessable;
 use Dingo\Support\Guesser\QueryGuesser;
+use Guessable;
 use PHPUnit\Framework\TestCase;
 
 class QueryGuesserTest extends TestCase

@@ -5,7 +5,8 @@
   "require": {
     "php": "^8.2",
     "ext-redis": "*",
-    "xgbnl/paginator": "dev-main"
+    "xgbnl/paginator": "dev-main",
+    "xgbnl/guesser": "dev-main"
   },
   "require-dev": {
     "illuminate/support": "^10.13.5",
@@ -18,7 +19,7 @@
   "autoload": {
     "psr-4": {
       "Dingo\\": "src/",
-      "Dingo\\Support\\Facades\\": "src/Support/Facades/"
+      "Dingo\\Support\\Facades\\": "src/Facades/"
     }
   },
   "autoload-dev": {

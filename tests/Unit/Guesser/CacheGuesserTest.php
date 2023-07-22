@@ -3,7 +3,7 @@
 namespace Tests\Unit\Guesser;
 
 use Dingo\Support\Guesser\CacheGuesser;
-use Dingo\Support\Guesser\Contacts\Guessable;
+use Guessable;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

@@ -4,7 +4,7 @@ namespace Dingo\Caches;
 
 use Dingo\Boundary\Connection\Contacts\Connector;
 use Dingo\Caches\Contacts\Cacheable;
-use Dingo\Support\Guesser\Contacts\Guessable;
+use Guessable;
 use Redis;
 
 abstract readonly class Cache implements Cacheable
