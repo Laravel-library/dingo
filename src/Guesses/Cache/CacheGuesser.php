@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Elephant\Guesses;
+namespace Elephant\Guesses\Cache;
+
+use Elephant\Guesses\Guesser;
 
 final class CacheGuesser extends Guesser
 {

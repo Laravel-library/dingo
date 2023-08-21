@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Elephant;
 
 use Elephant\Boundary\Connection\CacheConnector;
