@@ -1,8 +1,8 @@
 <?php
 
-namespace Elephant\Boundary\Connection;
+namespace Elephant\Caches\Connection;
 
-use Elephant\Boundary\Connection\Contacts\Connector;
+use Elephant\Contacts\Connection\Connector;
 use Illuminate\Redis\RedisManager;
 use Redis;
 

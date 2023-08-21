@@ -1,6 +1,6 @@
 <?php
 
-namespace Elephant\Boundary\Connection\Contacts;
+namespace Elephant\Contacts\Connection;
 
 interface Connector
 {

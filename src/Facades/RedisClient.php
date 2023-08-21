@@ -2,7 +2,7 @@
 
 namespace Elephant\Facades;
 
-use Elephant\Boundary\Connection\Contacts\Connector;
+use Elephant\Contacts\Connection\Connector;
 use Illuminate\Support\Facades\Facade;
 
 /**

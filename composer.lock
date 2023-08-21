@@ -4,54 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4df709c7f0ed4f08c6be0b5ca0cf82be",
+    "content-hash": "9b3c2ae05243c1b130dbec765c4cf4f0",
     "packages": [
-        {
-            "name": "xgbnl/guesser",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-library/guesser.git",
-                "reference": "a25ce4a83fbc419127c02b7ec9212ea556a23722"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-library/guesser/zipball/a25ce4a83fbc419127c02b7ec9212ea556a23722",
-                "reference": "a25ce4a83fbc419127c02b7ec9212ea556a23722",
-                "shasum": ""
-            },
-            "require": {
-                "php": "8.2.*"
-            },
-            "require-dev": {
-                "illuminate/contracts": "^10.15",
-                "illuminate/database": "^10.15"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Koala\\Guesses\\GuesserServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Koala\\Guesses\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Koala base component.",
-            "support": {
-                "issues": "https://github.com/laravel-library/guesser/issues",
-                "source": "https://github.com/laravel-library/guesser/tree/main"
-            },
-            "time": "2023-07-22T08:14:12+00:00"
-        },
         {
             "name": "xgbnl/paginator",
             "version": "dev-main",
@@ -3344,8 +3298,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "xgbnl/paginator": 20,
-        "xgbnl/guesser": 20
+        "xgbnl/paginator": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

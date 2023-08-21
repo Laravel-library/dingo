@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Elephant\Repository;
 
 use Illuminate\Contracts\Database\Eloquent\Builder;
@@ -25,5 +27,10 @@ trait DataAccessTrait
     public function delete(mixed $value, string $by = 'id'): int
     {
         return $this->builder()->where($by, $value)->delete();
+    }
+
+    public function updateJson(array|string $values): void
+    {
+
     }
 }

@@ -5,8 +5,7 @@
   "require": {
     "php": "^8.2",
     "ext-redis": "*",
-    "xgbnl/paginator": "dev-main",
-    "xgbnl/guesser": "dev-main"
+    "xgbnl/paginator": "dev-main"
   },
   "require-dev": {
     "illuminate/support": "^10.13.5",

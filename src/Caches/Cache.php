@@ -2,9 +2,9 @@
 
 namespace Elephant\Caches;
 
-use Elephant\Boundary\Connection\Contacts\Connector;
 use Elephant\Contacts\Cache\Cacheable;
-use Guessable;
+use Elephant\Contacts\Connection\Connector;
+use Elephant\Contacts\Guesses\Guessable;
 use Redis;
 
 abstract readonly class Cache implements Cacheable
@@ -27,6 +27,6 @@ abstract readonly class Cache implements Cacheable
 
     public function generateKey(): string
     {
-        return $this->guessable->guess(get_class($this))->getResolved();
+        return $this->guessable->needs(get_class($this))->guess();
     }
 }
