@@ -12,8 +12,9 @@ use Elephant\Guesses\Cache\CacheGuesser;
 use Elephant\Guesses\Repositories\ModelGuesser;
 use Elephant\Guesses\Repositories\ModelResolver;
 use Illuminate\Contracts\Container\Container;
+use Illuminate\Support\ServiceProvider;
 
-class ServiceProvider extends \Illuminate\Support\ServiceProvider
+class ElephantServiceProvider extends ServiceProvider
 {
     public function register(): void
     {

@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Kernel;
 
-use Elephant\ServiceProvider;
+use Elephant\ElephantServiceProvider;
 use Illuminate\Container\Container;
 
 final readonly class BootStrap
@@ -13,9 +13,9 @@ final readonly class BootStrap
         self::makeServiceProvider()->register();
     }
 
-    protected static function makeServiceProvider(): ServiceProvider
+    protected static function makeServiceProvider(): ElephantServiceProvider
     {
-        return new ServiceProvider(self::app());
+        return new ElephantServiceProvider(self::app());
     }
 
     public static function app():Container

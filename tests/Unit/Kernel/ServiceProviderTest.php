@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Kernel;
 
-use Elephant\ServiceProvider;
+use Elephant\ElephantServiceProvider;
 use Illuminate\Container\Container;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -17,9 +17,9 @@ class ServiceProviderTest extends TestCase
         $this->assertIsObject($provider);
     }
 
-    protected function getProvider(Container $container): ServiceProvider
+    protected function getProvider(Container $container): ElephantServiceProvider
     {
-        return new ServiceProvider($container);
+        return new ElephantServiceProvider($container);
     }
 
     public static function initContainer(): array
