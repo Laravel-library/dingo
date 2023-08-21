@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Response;
 
-use Dingo\Support\Http\Contacts\Responder;
-use Dingo\Support\Http\Response;
+use Elephant\Response\Responder;
+use Elephant\Support\Http\Contacts\Responsible;
 use PHPUnit\Framework\TestCase;
 
 class ResponderTest extends TestCase
@@ -37,8 +37,8 @@ class ResponderTest extends TestCase
         $this->assertEquals(204,$response->original['code']);
     }
 
-    protected function getResponder(): Responder
+    protected function getResponder(): Responsible
     {
-        return new Response();
+        return new Responder();
     }
 }

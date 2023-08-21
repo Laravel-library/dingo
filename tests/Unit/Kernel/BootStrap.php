@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Kernel;
 
-use Dingo\ServiceProvider;
+use Elephant\ServiceProvider;
 use Illuminate\Container\Container;
 
 final readonly class BootStrap

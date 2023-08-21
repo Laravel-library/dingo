@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Kernel;
 
-use Dingo\ServiceProvider;
+use Elephant\ServiceProvider;
 use Illuminate\Container\Container;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

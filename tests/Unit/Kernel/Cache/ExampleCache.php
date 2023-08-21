@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Kernel\Cache;
 
-readonly class ExampleCache extends \Dingo\Caches\Cache
+readonly class ExampleCache extends \Elephant\Caches\Cache
 {
 
 }

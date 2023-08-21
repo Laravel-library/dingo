@@ -1,10 +1,10 @@
 <?php
 
-namespace Dingo\Support\Http\Contacts;
+namespace Elephant\Contacts\Response;
 
 use Illuminate\Http\JsonResponse;
 
-interface Responder
+interface Responsible
 {
     public function render(string|array $data, int $code): JsonResponse;
 }

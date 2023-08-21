@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Kernel\Repository;
 
-use Dingo\Boundary\Particular\SpecialModel;
-use Dingo\Query\Contacts\Queryable;
-use Dingo\Repositories\Repository;
+use Elephant\Boundary\Particular\SpecialModel;
+use Elephant\Query\Contacts\Queryable;
+use Elephant\Repository\Repository;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Tests\Unit\Kernel\BootStrap;

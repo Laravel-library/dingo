@@ -1,5 +1,5 @@
 {
-  "name": "xgbnl/dingo",
+  "name": "xgbnl/elephant",
   "description": "LayeredStructure",
   "type": "library",
   "require": {
@@ -18,8 +18,8 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Dingo\\": "src/",
-      "Dingo\\Support\\Facades\\": "src/Facades/"
+      "Elephant\\": "src/",
+      "Elephant\\Support\\Facades\\": "src/Facades/"
     }
   },
   "autoload-dev": {
@@ -30,10 +30,11 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Dingo\\ServiceProvider"
+        "Elephant\\ServiceProvider"
       ],
       "aliases": {
-        "RedisClient": "Dingo\\Support\\Facades\\RedisClient"
+        "RedisClient": "Elephant\\Facades\\RedisClient",
+        "HttpResponder": "Elephant\\Facades\\HttpResponder"
       }
     }
   },

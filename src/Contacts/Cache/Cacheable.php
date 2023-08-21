@@ -1,6 +1,6 @@
 <?php
 
-namespace Dingo\Caches\Contacts;
+namespace Elephant\Contacts\Cache;
 
 interface Cacheable
 {

@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Kernel\Repository;
 
-use Dingo\Query\Contacts\Queryable;
-use Dingo\Repositories\Repository;
+use Elephant\Query\Contacts\Queryable;
+use Elephant\Repository\Repository;
 
 readonly class ExampleRepository extends Repository
 {

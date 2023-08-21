@@ -1,9 +1,9 @@
 <?php
 
-namespace Dingo\Caches;
+namespace Elephant\Caches;
 
-use Dingo\Boundary\Connection\Contacts\Connector;
-use Dingo\Caches\Contacts\Cacheable;
+use Elephant\Boundary\Connection\Contacts\Connector;
+use Elephant\Contacts\Cache\Cacheable;
 use Guessable;
 use Redis;
 

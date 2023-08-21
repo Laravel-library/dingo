@@ -1,8 +1,8 @@
 <?php
 
-namespace Dingo\Boundary\Connection;
+namespace Elephant\Boundary\Connection;
 
-use Dingo\Boundary\Connection\Contacts\Connector;
+use Elephant\Boundary\Connection\Contacts\Connector;
 use Illuminate\Redis\RedisManager;
 use Redis;
 

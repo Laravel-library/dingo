@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Guesser;
 
-use Dingo\Support\Guesser\QueryGuesser;
+use Elephant\Support\Guesser\QueryGuesser;
 use Guessable;
 use PHPUnit\Framework\TestCase;
 

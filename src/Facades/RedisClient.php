@@ -1,8 +1,8 @@
 <?php
 
-namespace Dingo\Support\Facades;
+namespace Elephant\Facades;
 
-use Dingo\Boundary\Connection\Contacts\Connector;
+use Elephant\Boundary\Connection\Contacts\Connector;
 use Illuminate\Support\Facades\Facade;
 
 /**

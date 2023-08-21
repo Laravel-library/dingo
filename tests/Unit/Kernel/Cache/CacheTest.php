@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Kernel\Cache;
 
-use Dingo\Caches\Cache;
-use Dingo\Support\Facades\RedisClient;
+use Elephant\Caches\Cache;
+use Elephant\Support\Facades\RedisClient;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Facades\Facade;
 use PHPUnit\Framework\Attributes\DataProvider;

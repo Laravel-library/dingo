@@ -1,6 +1,6 @@
 <?php
 
-namespace Dingo\Boundary\Connection\Contacts;
+namespace Elephant\Boundary\Connection\Contacts;
 
 interface Connector
 {

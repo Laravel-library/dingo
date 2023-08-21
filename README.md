@@ -1,4 +1,4 @@
-### About Dingo
+### About Elephant
 
 To customize the connection for your cache driver, please invoke the `withConnection` method of `RedisClient` within the `ServiceProvider`.
 
@@ -6,7 +6,7 @@ To customize the connection for your cache driver, please invoke the `withConnec
 
 namespace App\Providers;
 
-use Dingo\Support\Facades\RedisClient;
+use Elephant\Support\Facades\RedisClient;
 
 class ServiceProvider 
 {
