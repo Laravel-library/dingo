@@ -10,18 +10,18 @@ use Illuminate\Database\Eloquent\Model;
 trait DataAccessTrait
 {
 
-    public function createOrUpdate(array $attributes, string $by = 'id'): Builder|Model
+    public function createOrUpdate(array $values, string $by = 'id'): Builder|Model
     {
-        if ($byValue = $attributes[$by] ?? null) {
+        if ($byValue = $values[$by] ?? null) {
 
             if ($by === 'id') {
-                unset($attributes[$by]);
+                unset($values[$by]);
             }
 
-            return $this->builder()->updateOrCreate([$by => $byValue], $attributes);
+            return $this->builder()->updateOrCreate([$by => $byValue], $values);
         }
 
-        return $this->builder()->create($attributes);
+        return $this->builder()->create($values);
     }
 
     public function delete(mixed $value, string $by = 'id'): int
@@ -29,7 +29,12 @@ trait DataAccessTrait
         return $this->builder()->where($by, $value)->delete();
     }
 
-    public function updateJson(array|string $values): void
+    public function jsonUpdate(array|string $attributes, string|int $id): int
+    {
+        return $this->query()->where('id', $id)->update($this->resolve($attributes));
+    }
+
+    private function resolve(mixed $values): array
     {
 
     }
