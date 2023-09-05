@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Elephant\Repository;
+namespace Elephant\Repositories;
 
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

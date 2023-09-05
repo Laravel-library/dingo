@@ -3,7 +3,7 @@
 namespace Tests\Unit\Kernel\Repository;
 
 use Elephant\Query\Contacts\Queryable;
-use Elephant\Repository\Repository;
+use Elephant\Repositories\Repository;
 
 readonly class ExampleRepository extends Repository
 {

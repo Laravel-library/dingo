@@ -4,7 +4,7 @@ namespace Tests\Unit\Kernel\Repository;
 
 use Elephant\Boundary\Particular\SpecialModel;
 use Elephant\Query\Contacts\Queryable;
-use Elephant\Repository\Repository;
+use Elephant\Repositories\Repository;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Tests\Unit\Kernel\BootStrap;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Elephant\Repository;
+namespace Elephant\Repositories;
 
 use Elephant\Contacts\Guesses\Resolvable;
 use Elephant\Contacts\Repository\Queryable;

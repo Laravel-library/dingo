@@ -1,6 +1,6 @@
 <?php
 
-namespace Elephant\Repository\Json;
+namespace Elephant\Repositories\Json;
 
 use Elephant\Contacts\Json\Jsonable;
 

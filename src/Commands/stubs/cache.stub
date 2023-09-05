@@ -1,0 +1,10 @@
+namespace DummyNamespace;
+
+declare(strict_types=1);
+
+use Elephant\Caches\Cache;
+
+class DummyClass extends Cache
+{
+    //
+}
