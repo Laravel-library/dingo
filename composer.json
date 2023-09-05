@@ -3,7 +3,7 @@
   "description": "LayeredStructure",
   "type": "library",
   "require": {
-    "php": "^8.2",
+    "php": "^8.2.10",
     "ext-redis": "*",
     "xgbnl/paginator": "dev-main"
   },
