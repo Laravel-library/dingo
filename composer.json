@@ -1,11 +1,10 @@
 {
-  "name": "xgbnl/elephant",
-  "description": "LayeredStructure",
+  "name": "xgbnl/foundation",
+  "description": "Foundation",
   "type": "library",
   "require": {
     "php": "^8.2.10",
-    "ext-redis": "*",
-    "xgbnl/paginator": "dev-main"
+    "ext-redis": "*"
   },
   "require-dev": {
     "illuminate/support": "^10.13.5",
@@ -30,7 +29,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "FoundationServiceProvider"
+        "Elephant\\FoundationServiceProvider"
       ],
       "aliases": {
         "RedisClient": "Elephant\\Facades\\RedisClient",
