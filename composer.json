@@ -32,8 +32,7 @@
         "Elephant\\FoundationServiceProvider"
       ],
       "aliases": {
-        "RedisClient": "Elephant\\Facades\\RedisClient",
-        "HttpResponder": "Elephant\\Facades\\HttpResponder"
+        "RedisClient": "Elephant\\Facades\\RedisClient"
       }
     }
   },
